@@ -1,20 +1,35 @@
 package com.example.cleanarchitecturestudy.account.domain;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Value;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
-@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Account {
-    private AccountId id;
-    private Money baselineBalance; // activityWindow의 첫 활동 바로 전까지의 잔고.
-    private ActivityWindow activityWindow; // 며칠 또는 몇 주간의 범위에 해당하는 활동을 보유. 입출금 시 활동창에 활동 추가만 함.
 
-    public Account(AccountId id, Money baselineBalance, ActivityWindow activityWindow) {
-        this.id = id;
-        this.baselineBalance = baselineBalance;
-        this.activityWindow = activityWindow;
+    @Getter
+    private final AccountId id;
+
+    @Getter
+    private final Money baselineBalance; // activityWindow의 첫 활동 바로 전까지의 잔고.
+
+    @Getter
+    private final ActivityWindow activityWindow; // 며칠 또는 몇 주간의 범위에 해당하는 활동을 보유. 입출금 시 활동창에 활동 추가만 함.
+
+    public static Account withoutId(Money baselineBalance, ActivityWindow activityWindow) {
+        return new Account(null, baselineBalance, activityWindow);
+    }
+
+    public static Account withId(AccountId accountId, Money baselineBalance, ActivityWindow activityWindow) {
+        return new Account(accountId, baselineBalance, activityWindow);
+    }
+
+    public Optional<AccountId> getId() {
+        return Optional.ofNullable(this.id);
     }
 
     // 현재 잔고 = 활동 직전까지의 잔고 + 현재까지의 활동창 내 모든 활동들의 잔고
@@ -25,7 +40,7 @@ public class Account {
     }
 
     public boolean withdraw(Money money, AccountId targetAccountId) {
-        if(!mayWithdraw(money)) {
+        if (!mayWithdraw(money)) {
             return false;
         }
 
