@@ -1,9 +1,9 @@
 package com.example.cleanarchitecturestudy.account.application.port.in;
 
-import com.example.cleanarchitecturestudy.account.domain.Account;
+import com.example.cleanarchitecturestudy.account.domain.Account.AccountId;
+import com.example.cleanarchitecturestudy.account.domain.Money;
 import com.example.cleanarchitecturestudy.common.SelfValidating;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.Value;
 
 import javax.validation.constraints.NotNull;
