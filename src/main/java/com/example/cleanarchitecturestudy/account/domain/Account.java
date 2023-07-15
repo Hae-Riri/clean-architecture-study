@@ -11,8 +11,11 @@ import java.util.Optional;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Account {
 
-    @Getter
     private final AccountId id;
+
+    public Optional<AccountId> getId() {
+        return Optional.ofNullable(this.id);
+    }
 
     @Getter
     private final Money baselineBalance; // activityWindow의 첫 활동 바로 전까지의 잔고.
@@ -26,10 +29,6 @@ public class Account {
 
     public static Account withId(AccountId accountId, Money baselineBalance, ActivityWindow activityWindow) {
         return new Account(accountId, baselineBalance, activityWindow);
-    }
-
-    public Optional<AccountId> getId() {
-        return Optional.ofNullable(this.id);
     }
 
     // 현재 잔고 = 활동 직전까지의 잔고 + 현재까지의 활동창 내 모든 활동들의 잔고
