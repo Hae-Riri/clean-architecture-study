@@ -20,7 +20,7 @@ public class SendMoneyService implements SendMoneyUseCase {
     private final LoadAccountPort loadAccountPort;
     private final AccountLock accountLock;
     private final UpdateAccountStatePort updateAccountStatePort;
-    private MoneyTransferProperties moneyTransferProperties;
+    private final MoneyTransferProperties moneyTransferProperties;
 
     @Override
     public boolean sendMoney(SendMoneyCommand command) {
