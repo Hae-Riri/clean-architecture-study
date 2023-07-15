@@ -17,11 +17,11 @@ public class Activity {
 
     @Getter
     @NonNull
-    private final Account.AccountId sourceAccountId; //인출 관련, withdrawal
+    private final Account.AccountId sourceAccountId; //인출자, withdrawal
 
     @Getter
     @NonNull
-    private final Account.AccountId targetAccountId; //예금 관련. deposit
+    private final Account.AccountId targetAccountId; //예금자 deposit
 
     @Getter
     @NonNull
@@ -45,6 +45,7 @@ public class Activity {
         this.money = money;
     }
 
+    @Getter
     @RequiredArgsConstructor
     public static class ActivityId {
         private final Long value;
