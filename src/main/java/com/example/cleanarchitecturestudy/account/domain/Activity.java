@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@RequiredArgsConstructor
 public class Activity {
 
     @Getter

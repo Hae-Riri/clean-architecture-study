@@ -1,21 +1,21 @@
 package com.example.cleanarchitecturestudy.account.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 
 import java.math.BigInteger;
 
+@EqualsAndHashCode
 @Getter
+@AllArgsConstructor
 public class Money {
 
     public static Money ZERO = Money.of(0L);
 
     @NonNull
     private final BigInteger amount;
-
-    public Money(@NonNull BigInteger amount) {
-        this.amount = amount;
-    }
 
     public static Money of(long value) {
         return new Money(BigInteger.valueOf(value));
