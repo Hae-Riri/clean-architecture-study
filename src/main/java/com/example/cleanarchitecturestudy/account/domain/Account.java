@@ -65,9 +65,9 @@ public class Account {
 
     public boolean deposit(Money money, AccountId sourceAccountId) {
         Activity deposit = new Activity(
-                this.id,
+                this.id, //owner
                 sourceAccountId,
-                this.id,
+                this.id, //target
                 LocalDateTime.now(),
                 money
         );

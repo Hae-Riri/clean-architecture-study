@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.ToString;
 
 import java.math.BigInteger;
 
+@ToString
 @EqualsAndHashCode
 @Getter
 @AllArgsConstructor
